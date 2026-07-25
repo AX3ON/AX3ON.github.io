@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>erebos</title>
 <link rel="icon" type="image/png" href="https://cx051.github.io/assets/favicons.png">
-<meta name="description" content="DETAILS section - erebos portfolio">
+<meta name="description" content="Badges and Certificates - erebos portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -92,182 +92,139 @@
   }
   .lede{ max-width:56ch; font-size:16.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 30px; }
 
-  /* ---------- photo block for details ---------- */
-  .photo-block{
-    display:flex; align-items:flex-start; gap:32px; flex-wrap:wrap;
+  /* ---------- badges grid ---------- */
+  .badges-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:24px;
   }
-  .bio-col{ flex:1; min-width:240px; }
-  
-  /* polaroid style photo */
-  .polaroid{
-    flex-shrink:0;
-    width:180px;
+  .badge-card{
     background:var(--panel);
     border:1px solid var(--line);
-    padding:10px 10px 26px;
     border-radius:var(--radius);
-    transform:rotate(-3deg);
-    box-shadow:0 20px 40px -18px rgba(0,0,0,.35);
-    position:relative;
-  }
-  .polaroid img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-    border-radius:calc(var(--radius) - 4px);
-  }
-  .polaroid .caption{
-    margin-top:10px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     text-align:center;
+    gap:16px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    opacity:0;
+    animation:cardFadeIn .6s ease forwards;
+  }
+  .badge-card:nth-child(1){ animation-delay:.1s; }
+  .badge-card:nth-child(2){ animation-delay:.2s; }
+  .badge-card:nth-child(3){ animation-delay:.3s; }
+  .badge-card:nth-child(4){ animation-delay:.4s; }
+  .badge-card:nth-child(5){ animation-delay:.5s; }
+  .badge-card:nth-child(6){ animation-delay:.6s; }
+  @keyframes cardFadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+  .badge-card:hover{
+    transform:translateY(-6px) scale(1.01);
+    box-shadow:0 24px 40px -20px rgba(0,0,0,.25);
+  }
+  .badge-icon{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    flex-shrink:0;
+  }
+  .badge-info h3{
+    font-family:"Sora",sans-serif;
+    font-size:18px;
+    margin:0 0 6px;
+  }
+  .badge-info p{
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.6;
+    margin:0;
+  }
+  .badge-meta{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:8px;
+  }
+  .badge-tag{
     font-family:"JetBrains Mono",monospace;
     font-size:11px;
-    letter-spacing:.06em;
     text-transform:uppercase;
-    color:var(--ink-faint);
-  }
-
-  /* ---------- status cards ---------- */
-  .status-cards{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    align-items:flex-start;
-    margin-top:20px;
-  }
-  .discord-card{
-    min-width:320px;
-  }
-  .discord-card img{
-    max-width:100%;
-    height:auto;
-    border-radius:var(--radius);
-  }
-
-  /* now-playing card styles */
-  .now-playing-card {
-    max-width: 420px;
-    min-width: 320px;
-    width: 100%;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 14px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    font-family: "Inter", sans-serif;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .now-playing-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 24px -10px rgba(0,0,0,.15);
-  }
-  .now-playing-card img {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .now-playing-status {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 4px;
-    font-size: 12px;
-    color: #888;
-  }
-  .now-playing-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #22c55e;
-    flex-shrink: 0;
-  }
-  .now-playing-dot.paused {
-    background: #999;
-  }
-  .now-playing-title {
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--ink);
-  }
-  .now-playing-artist {
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin: 2px 0 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* ---------- vitals grid (PC specs) ---------- */
-  .vitals-grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:28px 40px;
-  }
-  .vital{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-  .vital-name{
-    font-family:"JetBrains Mono",monospace;
-    font-size:13px;
-    letter-spacing:0.08em;
-    text-transform: uppercase;
-    color:var(--ink);
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-  }
-  .vital-name small{
-    font-size:11.5px;
-    letter-spacing:0.04em;
-    text-transform: none;
-    color:var(--ink-soft);
-    font-weight:400;
-  }
-  .meter{
-    width:100%;
-    height:6px;
+    letter-spacing:.03em;
+    color:var(--accent);
     background:var(--accent-soft);
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .meter-fill{
-    height:100%;
-    width:0;
-    background:var(--accent);
-    border-radius:6px;
-    transition: width 1s ease;
+    border-radius:20px;
+    padding:5px 11px;
   }
 
-  /* ---------- exhibit (desktop screenshot) ---------- */
-  .exhibit{
-    border:1px solid var(--line);
+  /* ---------- certificates list ---------- */
+  .certificates-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .certificate-card{
     background:var(--panel);
-    padding:14px;
+    border:1px solid var(--line);
     border-radius:var(--radius);
-    position: relative;
+    padding:24px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    opacity:0;
+    animation:cardFadeIn .6s ease forwards;
   }
-  .exhibit img{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:calc(var(--radius) - 4px);
+  .certificate-card:nth-child(1){ animation-delay:.1s; }
+  .certificate-card:nth-child(2){ animation-delay:.2s; }
+  .certificate-card:nth-child(3){ animation-delay:.3s; }
+  .certificate-card:nth-child(4){ animation-delay:.4s; }
+  .certificate-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 32px -16px rgba(0,0,0,.2);
   }
-  .exhibit .caption{
-    margin-top:10px;
+  .cert-icon{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    background:var(--accent-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    flex-shrink:0;
+  }
+  .cert-info{
+    flex:1;
+  }
+  .cert-info h3{
+    font-family:"Sora",sans-serif;
+    font-size:17px;
+    margin:0 0 4px;
+  }
+  .cert-info p{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin:0;
+  }
+  .cert-link{
     font-family:"JetBrains Mono",monospace;
-    font-size:11.5px;
-    color:var(--ink-faint);
+    font-size:12px;
+    color:var(--accent);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:gap .2s ease;
+  }
+  .cert-link:hover{
+    gap:10px;
   }
 
   /* ---------- footer ---------- */
@@ -301,10 +258,9 @@
   @media (prefers-reduced-motion:reduce){ .reveal{ animation:none; opacity:1; transform:none; } html{scroll-behavior:auto;} }
 
   @media (max-width:700px){
-    .vitals-grid{ grid-template-columns: 1fr; gap:22px; }
-    .photo-block{ flex-direction:column-reverse; gap:22px; }
-    .polaroid{ align-self:center; transform:rotate(-2deg); }
-    .discord-card, .now-playing-card{ min-width: 0; width: 100%; }
+    .badges-grid{ grid-template-columns: 1fr; }
+    .certificate-card{ flex-direction:column; text-align:center; }
+    .cert-link{ justify-content:center; }
   }
 </style>
 </head>
@@ -315,6 +271,7 @@
     <div class="brand"><span class="brand-dot">e</span> erebos</div>
     <nav>
       <a href="index.html">Home</a>
+      <a href="status.html">Status</a>
       <a href="details.html" class="active">Details</a>
     </nav>
     <div class="nav-right" style="position:relative;">
@@ -330,19 +287,11 @@
 
 <div class="wrap">
   <section class="details-hero reveal" style="border-top:none;">
-    <p class="eyebrow">Important Notes</p>
+    <p class="eyebrow">Achievements & Recognition</p>
     <h1>DETAILS</h1>
-    <div class="photo-block">
-      <div class="bio-col">
-        <p class="lede">
-          This document contains important details about the user — hardware specs, desktop setup, and current status.
-        </p>
-      </div>
-      <div class="polaroid">
-        <img src="https://cx051.github.io/assets/pfp.png" alt="Profile Photo">
-        <p class="caption">user photo</p>
-      </div>
-    </div>
+    <p class="lede">
+      A collection of badges, certificates, and achievements earned through continuous learning and professional development.
+    </p>
   </section>
 </div>
 
@@ -350,16 +299,82 @@
   <section class="reveal">
     <div class="section-head">
       <span class="idx">00</span>
-      <h2>Status</h2>
-      <p>Current activity and presence.</p>
+      <h2>Badges</h2>
+      <p>Digital credentials and accomplishments.</p>
     </div>
-    <div class="status-cards">
-      <div class="discord-card">
-        <img
-          src="https://lanyard.cnrad.dev/api/1525522204530573523?theme=dark&animated=true&showDisplayName=true&hideTimestamp=false"
-          alt="Discord Rich Presence">
+    <div class="badges-grid">
+      <!-- Badge 1 -->
+      <div class="badge-card">
+        <div class="badge-icon">🏆</div>
+        <div class="badge-info">
+          <h3>Achievement Badge</h3>
+          <p>Recognition for outstanding performance and dedication in the field.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Professional</span>
+          </div>
+        </div>
       </div>
-      <div id="now-playing"></div>
+      <!-- Badge 2 -->
+      <div class="badge-card">
+        <div class="badge-icon">🎓</div>
+        <div class="badge-info">
+          <h3>Learning Badge</h3>
+          <p>Completed advanced coursework and demonstrated mastery of key concepts.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Education</span>
+          </div>
+        </div>
+      </div>
+      <!-- Badge 3 -->
+      <div class="badge-card">
+        <div class="badge-icon">💻</div>
+        <div class="badge-info">
+          <h3>Technical Badge</h3>
+          <p>Validated skills in software development and technical problem-solving.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Technology</span>
+          </div>
+        </div>
+      </div>
+      <!-- Badge 4 -->
+      <div class="badge-card">
+        <div class="badge-icon">🔬</div>
+        <div class="badge-info">
+          <h3>Research Badge</h3>
+          <p>Contributed to research initiatives and scientific inquiry.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Research</span>
+          </div>
+        </div>
+      </div>
+      <!-- Badge 5 -->
+      <div class="badge-card">
+        <div class="badge-icon">🛡️</div>
+        <div class="badge-info">
+          <h3>Security Badge</h3>
+          <p>Demonstrated expertise in cybersecurity principles and practices.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Security</span>
+          </div>
+        </div>
+      </div>
+      <!-- Badge 6 -->
+      <div class="badge-card">
+        <div class="badge-icon">🌟</div>
+        <div class="badge-info">
+          <h3>Excellence Badge</h3>
+          <p>Recognized for exceptional contributions and leadership.</p>
+          <div class="badge-meta">
+            <span class="badge-tag">2024</span>
+            <span class="badge-tag">Leadership</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -368,48 +383,46 @@
   <section class="reveal">
     <div class="section-head">
       <span class="idx">01</span>
-      <h2>PC Specs</h2>
-      <p>The machine behind the terminal.</p>
+      <h2>Certificates</h2>
+      <p>Official certifications and credentials.</p>
     </div>
-    <div class="vitals-grid">
-      <div class="vital">
-        <span class="vital-name">CPU<small>Intel® Pentium® G640 × 2, Sandy Bridge 2011</small></span>
-        <div class="meter"><div class="meter-fill" data-w="12"></div></div>
+    <div class="certificates-list">
+      <!-- Certificate 1 -->
+      <div class="certificate-card">
+        <div class="cert-icon">📜</div>
+        <div class="cert-info">
+          <h3>Professional Certification</h3>
+          <p>Issued by recognized institution • 2024</p>
+        </div>
+        <a href="#" class="cert-link">View Certificate →</a>
       </div>
-      <div class="vital">
-        <span class="vital-name">GPU<small>Intel® HD Graphics 2000 (SNB GT1)</small></span>
-        <div class="meter"><div class="meter-fill" data-w="5"></div></div>
+      <!-- Certificate 2 -->
+      <div class="certificate-card">
+        <div class="cert-icon">📄</div>
+        <div class="cert-info">
+          <h3>Technical Certification</h3>
+          <p>Advanced technical skills validation • 2024</p>
+        </div>
+        <a href="#" class="cert-link">View Certificate →</a>
       </div>
-      <div class="vital">
-        <span class="vital-name">RAM<small>4.0 GiB DDR3</small></span>
-        <div class="meter"><div class="meter-fill" data-w="18"></div></div>
+      <!-- Certificate 3 -->
+      <div class="certificate-card">
+        <div class="cert-icon">🎖️</div>
+        <div class="cert-info">
+          <h3>Completion Certificate</h3>
+          <p>Successfully completed intensive program • 2024</p>
+        </div>
+        <a href="#" class="cert-link">View Certificate →</a>
       </div>
-      <div class="vital">
-        <span class="vital-name">Storage<small>500 GB HDD</small></span>
-        <div class="meter"><div class="meter-fill" data-w="22"></div></div>
+      <!-- Certificate 4 -->
+      <div class="certificate-card">
+        <div class="cert-icon">⭐</div>
+        <div class="cert-info">
+          <h3>Achievement Certificate</h3>
+          <p>Recognition for exceptional performance • 2024</p>
+        </div>
+        <a href="#" class="cert-link">View Certificate →</a>
       </div>
-      <div class="vital">
-        <span class="vital-name">Motherboard<small>INTEL Corporation H61</small></span>
-        <div class="meter"><div class="meter-fill" data-w="20"></div></div>
-      </div>
-      <div class="vital">
-        <span class="vital-name">OS<small>Zorin OS 18.1 Core</small></span>
-        <div class="meter"><div class="meter-fill" data-w="90"></div></div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="wrap">
-  <section class="reveal">
-    <div class="section-head">
-      <span class="idx">02</span>
-      <h2>Desktop</h2>
-      <p>Where the magic happens.</p>
-    </div>
-    <div class="exhibit">
-      <img src="https://cx051.github.io/assets/desktop.png" alt="Desktop Screenshot">
-      <p class="caption">Ideal setup</p>
     </div>
   </section>
 </div>
@@ -420,89 +433,13 @@
       <a class="btn-light" href="https://github.com/erebos-git" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn-light" href="https://instagram.com/cx051__" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
-    <p class="filed">Filed somewhere between anatomy textbooks, terminal windows, and unfinished ideas.</p>
+    <p class="filed">Each badge and certificate represents a milestone in the journey of continuous learning.</p>
   </footer>
 </div>
 
 <script>
-// animate meters in once on load
-window.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.meter-fill').forEach((el,i)=>{
-    const w=el.getAttribute('data-w');
-    setTimeout(()=>{el.style.width=w+'%';},250+i*90);
-  });
-});
-
-const LASTFM_USER = "cx051";
-const LASTFM_API_KEY = "f74e91654578aef251323d48f4e67901";
-const FALLBACK_ART = "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png";
-
-function getAlbumArt(imageArray) {
-  const order = ["extralarge", "large", "medium", "small"];
-  for (const size of order) {
-    const img = imageArray.find(i => i.size === size);
-    if (img && img["#text"] && img["#text"].trim() !== "") {
-      return img["#text"];
-    }
-  }
-  return FALLBACK_ART;
-}
-
-function timeAgo(unixSeconds) {
-  const diffMs = Date.now() - unixSeconds * 1000;
-  const mins = Math.floor(diffMs / 60000);
-  if (mins < 1) return "just now";
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  return `${days}d ago`;
-}
-
-async function fetchNowPlaying() {
-  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=1`;
-
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    const track = data.recenttracks.track[0];
-    const el = document.getElementById("now-playing");
-
-    if (!track) {
-      el.innerHTML = "";
-      return;
-    }
-
-    const isPlaying = track["@attr"]?.nowplaying === "true";
-    const title = track.name;
-    const artist = track.artist["#text"];
-    const albumArt = getAlbumArt(track.image);
-
-    const lastPlayedText = track.date
-      ? `Played ${timeAgo(track.date.uts)}`
-      : "Last played";
-
-    const statusLabel = isPlaying
-      ? '<span class="now-playing-dot"></span> Listening now'
-      : `<span class="now-playing-dot paused"></span> ${lastPlayedText}`;
-
-    el.innerHTML = `
-      <div class="now-playing-card">
-        <img src="${albumArt}" alt="${title}" onerror="this.src='${FALLBACK_ART}'">
-        <div style="min-width:0; flex:1;">
-          <div class="now-playing-status">${statusLabel}</div>
-          <p class="now-playing-title">${title}</p>
-          <p class="now-playing-artist">${artist}</p>
-        </div>
-      </div>
-    `;
-  } catch (err) {
-    console.error("Last.fm fetch failed:", err);
-  }
-}
-
-fetchNowPlaying();
-setInterval(fetchNowPlaying, 15000);
+// Optional: Add any interactive functionality here
 </script>
+
 </body>
 </html>
