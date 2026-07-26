@@ -95,22 +95,20 @@
   /* ---------- badges grid ---------- */
   .badges-grid{
     display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap:24px;
   }
   .badge-card{
     background:var(--panel);
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:24px;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:16px;
     transition:transform .2s ease, box-shadow .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
+    text-decoration:none;
   }
   .badge-card:nth-child(1){ animation-delay:.1s; }
   .badge-card:nth-child(2){ animation-delay:.2s; }
@@ -120,19 +118,30 @@
   .badge-card:nth-child(6){ animation-delay:.6s; }
   @keyframes cardFadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
   .badge-card:hover{
-    transform:translateY(-6px) scale(1.01);
+    transform:translateY(-6px);
     box-shadow:0 24px 40px -20px rgba(0,0,0,.25);
+    border-color:var(--accent);
   }
-  .badge-icon{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    background:var(--accent-soft);
+  .badge-image-frame{
+    width:100%;
+    aspect-ratio:4/3;
+    background:#f6f7f4;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:32px;
-    flex-shrink:0;
+    padding:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .badge-image-frame img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    display:block;
+    border-radius:8px;
+  }
+  .badge-info{
+    padding:20px 22px 24px;
+    text-align:left;
   }
   .badge-info h3{
     font-family:"Sora",sans-serif;
@@ -149,8 +158,7 @@
     display:flex;
     gap:12px;
     flex-wrap:wrap;
-    justify-content:center;
-    margin-top:8px;
+    margin-top:12px;
   }
   .badge-tag{
     font-family:"JetBrains Mono",monospace;
@@ -173,13 +181,14 @@
     background:var(--panel);
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:24px;
+    padding:22px 24px;
     display:flex;
     align-items:center;
     gap:20px;
     transition:transform .2s ease, box-shadow .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
+    text-decoration:none;
   }
   .certificate-card:nth-child(1){ animation-delay:.1s; }
   .certificate-card:nth-child(2){ animation-delay:.2s; }
@@ -188,6 +197,7 @@
   .certificate-card:hover{
     transform:translateY(-4px);
     box-shadow:0 16px 32px -16px rgba(0,0,0,.2);
+    border-color:var(--accent);
   }
   .cert-icon{
     width:56px;
@@ -197,11 +207,19 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:24px;
     flex-shrink:0;
+    overflow:hidden;
+    padding:6px;
+  }
+  .cert-icon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
   }
   .cert-info{
     flex:1;
+    min-width:0;
   }
   .cert-info h3{
     font-family:"Sora",sans-serif;
@@ -222,6 +240,8 @@
     align-items:center;
     gap:6px;
     transition:gap .2s ease;
+    flex-shrink:0;
+    white-space:nowrap;
   }
   .cert-link:hover{
     gap:10px;
@@ -296,17 +316,19 @@
     </div>
     <div class="badges-grid">
       <!-- Google Badge -->
-      <div class="badge-card" onclick="window.open('https://www.skills.google/public_profiles/a963b74a-b9c3-4439-b786-75a991453365/badges/25790657', '_blank')" style="cursor:pointer;">
-        <img src="assets/GOOGLE.png" alt="Gen AI for Healthcare" style="width:80px; height:80px; border-radius:50%; object-fit:cover;" />
+      <a class="badge-card" href="https://www.skills.google/public_profiles/a963b74a-b9c3-4439-b786-75a991453365/badges/25790657" target="_blank" rel="noopener">
+        <div class="badge-image-frame">
+          <img src="assets/GOOGLE.png" alt="Generative AI for Healthcare completion badge" />
+        </div>
         <div class="badge-info">
-          <h3>Gen AI for Healthcare</h3>
+          <h3>Generative AI for Healthcare</h3>
           <p>Verified skill credential from Google Skills platform.</p>
           <div class="badge-meta">
             <span class="badge-tag">2026</span>
-            <span class="badge-tag">Google</span>
+            <span class="badge-tag">Google Cloud</span>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </div>
@@ -319,42 +341,42 @@
       <p>Official certifications and credentials.</p>
     </div>
     <div class="certificates-list">
-      <!-- Certificate 1 -->
-      <div class="certificate-card">
-        <div class="cert-icon">📜</div>
+      <!-- HP LIFE Certificate 1 -->
+      <a class="certificate-card" href="https://www.life-global.org/certificate/22ac1066-04c8-42be-addf-b31bd684aec0" target="_blank" rel="noopener">
+        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
         <div class="cert-info">
-          <h3>Professional Certification</h3>
-          <p>Issued by recognized institution • 2024</p>
+          <h3>Effective Presentation</h3>
+          <p>Issued by HP LIFE</p>
         </div>
-        <a href="#" class="cert-link">View Certificate →</a>
-      </div>
-      <!-- Certificate 2 -->
-      <div class="certificate-card">
-        <div class="cert-icon">📄</div>
+        <span class="cert-link">View Certificate →</span>
+      </a>
+      <!-- HP LIFE Certificate 2 -->
+      <a class="certificate-card" href="https://www.life-global.org/certificate/5c3d2904-0142-4e9d-ac1b-2e4cc8dd39e8" target="_blank" rel="noopener">
+        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
         <div class="cert-info">
-          <h3>Technical Certification</h3>
-          <p>Advanced technical skills validation • 2024</p>
+          <h3>Effective Leadership</h3>
+          <p>Issued by HP LIFE</p>
         </div>
-        <a href="#" class="cert-link">View Certificate →</a>
-      </div>
-      <!-- Certificate 3 -->
-      <div class="certificate-card">
-        <div class="cert-icon">🎖️</div>
+        <span class="cert-link">View Certificate →</span>
+      </a>
+      <!-- HP LIFE Certificate 3 -->
+      <a class="certificate-card" href="https://www.life-global.org/certificate/7a705ee8-aa8d-4ab2-b10a-db44ec203e14" target="_blank" rel="noopener">
+        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
         <div class="cert-info">
-          <h3>Completion Certificate</h3>
-          <p>Successfully completed intensive program • 2024</p>
+          <h3>Critical Thinking in AI Era</h3>
+          <p>Issued by HP LIFE</p>
         </div>
-        <a href="#" class="cert-link">View Certificate →</a>
-      </div>
-      <!-- Certificate 4 -->
-      <div class="certificate-card">
-        <div class="cert-icon">⭐</div>
+        <span class="cert-link">View Certificate →</span>
+      </a>
+      <!-- HP LIFE Certificate 4 -->
+      <a class="certificate-card" href="https://www.life-global.org/certificate/c0889dc7-19f9-406f-973c-7ffee6ff41a8" target="_blank" rel="noopener">
+        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
         <div class="cert-info">
-          <h3>Achievement Certificate</h3>
-          <p>Recognition for exceptional performance • 2024</p>
+          <h3>Basics of Finance</h3>
+          <p>Issued by HP LIFE</p>
         </div>
-        <a href="#" class="cert-link">View Certificate →</a>
-      </div>
+        <span class="cert-link">View Certificate →</span>
+      </a>
     </div>
   </section>
 </div>
