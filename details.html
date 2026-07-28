@@ -94,114 +94,128 @@
 
   /* ---------- badges grid ---------- */
   .badges-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap:24px;
-  }
-  .badge-card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
     display:flex;
     flex-direction:column;
-    transition:transform .2s ease, box-shadow .2s ease;
+    gap:0;
+  }
+  .badge-item{
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:28px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    transition:background .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
-    text-decoration:none;
   }
-  .badge-card:nth-child(1){ animation-delay:.1s; }
-  .badge-card:nth-child(2){ animation-delay:.2s; }
-  .badge-card:nth-child(3){ animation-delay:.3s; }
-  .badge-card:nth-child(4){ animation-delay:.4s; }
-  .badge-card:nth-child(5){ animation-delay:.5s; }
-  .badge-card:nth-child(6){ animation-delay:.6s; }
+  .badge-item:first-child{ border-top:1px solid var(--line); }
+  .badge-item:nth-child(1){ animation-delay:.1s; }
+  .badge-item:nth-child(2){ animation-delay:.2s; }
+  .badge-item:nth-child(3){ animation-delay:.3s; }
+  .badge-item:nth-child(4){ animation-delay:.4s; }
+  .badge-item:nth-child(5){ animation-delay:.5s; }
+  .badge-item:nth-child(6){ animation-delay:.6s; }
   @keyframes cardFadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-  .badge-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 24px 40px -20px rgba(0,0,0,.25);
-    border-color:var(--accent);
+  .badge-item:hover{
+    background:rgba(219, 232, 227, 0.3);
   }
-  .badge-image-frame{
-    width:100%;
-    aspect-ratio:4/3;
+  .badge-thumb{
+    width:80px;
+    height:80px;
     background:#f6f7f4;
+    border-radius:12px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:22px;
-    border-bottom:1px solid var(--line);
+    padding:12px;
+    flex-shrink:0;
   }
-  .badge-image-frame img{
+  .badge-thumb img{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
     display:block;
-    border-radius:8px;
   }
-  .badge-info{
-    padding:20px 22px 24px;
-    text-align:left;
+  .badge-content{
+    min-width:0;
   }
-  .badge-info h3{
+  .badge-content h3{
     font-family:"Sora",sans-serif;
-    font-size:18px;
+    font-size:20px;
+    font-weight:600;
     margin:0 0 6px;
+    color:var(--ink);
   }
-  .badge-info p{
+  .badge-content p{
     color:var(--ink-soft);
-    font-size:14px;
+    font-size:14.5px;
     line-height:1.6;
     margin:0;
   }
-  .badge-meta{
+  .badge-action{
     display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:12px;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
   }
-  .badge-tag{
+  .badge-year{
     font-family:"JetBrains Mono",monospace;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.03em;
+    font-size:12px;
     color:var(--accent);
     background:var(--accent-soft);
     border-radius:20px;
-    padding:5px 11px;
+    padding:6px 14px;
+    font-weight:500;
+  }
+  .badge-arrow{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .badge-item:hover .badge-arrow{
+    transform:translateX(4px);
+    background:var(--accent);
   }
 
   /* ---------- certificates list ---------- */
   .certificates-list{
     display:flex;
     flex-direction:column;
-    gap:16px;
+    gap:0;
   }
-  .certificate-card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:22px 24px;
-    display:flex;
+  .certificate-item{
+    display:grid;
+    grid-template-columns: auto 1fr auto;
     align-items:center;
-    gap:20px;
-    transition:transform .2s ease, box-shadow .2s ease;
+    gap:24px;
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    transition:background .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
-    text-decoration:none;
   }
-  .certificate-card:nth-child(1){ animation-delay:.1s; }
-  .certificate-card:nth-child(2){ animation-delay:.2s; }
-  .certificate-card:nth-child(3){ animation-delay:.3s; }
-  .certificate-card:nth-child(4){ animation-delay:.4s; }
-  .certificate-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 16px 32px -16px rgba(0,0,0,.2);
-    border-color:var(--accent);
+  .certificate-item:first-child{ border-top:1px solid var(--line); }
+  .certificate-item:nth-child(1){ animation-delay:.1s; }
+  .certificate-item:nth-child(2){ animation-delay:.2s; }
+  .certificate-item:nth-child(3){ animation-delay:.3s; }
+  .certificate-item:nth-child(4){ animation-delay:.4s; }
+  .certificate-item:nth-child(5){ animation-delay:.5s; }
+  .certificate-item:hover{
+    background:rgba(219, 232, 227, 0.3);
   }
-  .cert-icon{
-    width:56px;
-    height:56px;
+  .cert-thumb{
+    width:64px;
+    height:64px;
     border-radius:12px;
     background:var(--accent-soft);
     display:flex;
@@ -209,42 +223,61 @@
     justify-content:center;
     flex-shrink:0;
     overflow:hidden;
-    padding:6px;
+    padding:8px;
   }
-  .cert-icon img{
+  .cert-thumb img{
     width:100%;
     height:100%;
     object-fit:contain;
     display:block;
   }
-  .cert-info{
-    flex:1;
+  .cert-content{
     min-width:0;
   }
-  .cert-info h3{
+  .cert-content h3{
     font-family:"Sora",sans-serif;
-    font-size:17px;
+    font-size:18px;
+    font-weight:600;
     margin:0 0 4px;
+    color:var(--ink);
   }
-  .cert-info p{
-    color:var(--ink-soft);
+  .cert-content p{
+    color:var(--ink-faint);
     font-size:14px;
     margin:0;
   }
-  .cert-link{
+  .cert-action{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .cert-btn{
     font-family:"JetBrains Mono",monospace;
-    font-size:12px;
+    font-size:12.5px;
     color:var(--accent);
+    background:transparent;
+    border:1px solid var(--accent);
+    border-radius:30px;
+    padding:8px 18px;
     text-decoration:none;
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    transition:gap .2s ease;
-    flex-shrink:0;
+    gap:8px;
+    transition:all .2s ease;
     white-space:nowrap;
   }
-  .cert-link:hover{
-    gap:10px;
+  .cert-btn:hover{
+    background:var(--accent);
+    color:var(--bg);
+  }
+  .cert-btn svg{
+    width:14px;
+    height:14px;
+    transition:transform .2s ease;
+  }
+  .certificate-item:hover .cert-btn svg{
+    transform:translateX(4px);
   }
 
   /* ---------- footer ---------- */
@@ -278,9 +311,23 @@
   @media (prefers-reduced-motion:reduce){ .reveal{ animation:none; opacity:1; transform:none; } html{scroll-behavior:auto;} }
 
   @media (max-width:700px){
-    .badges-grid{ grid-template-columns: 1fr; }
-    .certificate-card{ flex-direction:column; text-align:center; }
-    .cert-link{ justify-content:center; }
+    .badges-grid{ gap:0; }
+    .badge-item{
+      grid-template-columns: 1fr;
+      text-align:center;
+      gap:16px;
+      padding:24px 0;
+    }
+    .badge-thumb{ margin:0 auto; }
+    .badge-action{ justify-content:center; }
+    .certificate-item{
+      grid-template-columns: 1fr;
+      text-align:center;
+      gap:16px;
+      padding:20px 0;
+    }
+    .cert-thumb{ margin:0 auto; }
+    .cert-action{ justify-content:center; }
   }
 </style>
 </head>
@@ -316,17 +363,17 @@
     </div>
     <div class="badges-grid">
       <!-- Google Badge -->
-      <a class="badge-card" href="https://www.skills.google/public_profiles/a963b74a-b9c3-4439-b786-75a991453365/badges/25790657" target="_blank" rel="noopener">
-        <div class="badge-image-frame">
+      <a class="badge-item" href="https://www.skills.google/public_profiles/a963b74a-b9c3-4439-b786-75a991453365/badges/25790657" target="_blank" rel="noopener">
+        <div class="badge-thumb">
           <img src="assets/GOOGLE.png" alt="Generative AI for Healthcare completion badge" />
         </div>
-        <div class="badge-info">
+        <div class="badge-content">
           <h3>Generative AI for Healthcare</h3>
           <p>Verified skill credential from Google Skills platform.</p>
-          <div class="badge-meta">
-            <span class="badge-tag">2026</span>
-            <span class="badge-tag">Google Cloud</span>
-          </div>
+        </div>
+        <div class="badge-action">
+          <span class="badge-year">2026</span>
+          <span class="badge-arrow">→</span>
         </div>
       </a>
     </div>
@@ -342,40 +389,59 @@
     </div>
     <div class="certificates-list">
       <!-- HP LIFE Certificate 1 -->
-      <a class="certificate-card" href="https://www.life-global.org/certificate/22ac1066-04c8-42be-addf-b31bd684aec0" target="_blank" rel="noopener">
-        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
-        <div class="cert-info">
+      <a class="certificate-item" href="https://www.life-global.org/certificate/22ac1066-04c8-42be-addf-b31bd684aec0" target="_blank" rel="noopener">
+        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
+        <div class="cert-content">
           <h3>Effective Presentation</h3>
           <p>Issued by HP LIFE</p>
         </div>
-        <span class="cert-link">View Certificate →</span>
+        <div class="cert-action">
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
       </a>
       <!-- HP LIFE Certificate 2 -->
-      <a class="certificate-card" href="https://www.life-global.org/certificate/5c3d2904-0142-4e9d-ac1b-2e4cc8dd39e8" target="_blank" rel="noopener">
-        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
-        <div class="cert-info">
+      <a class="certificate-item" href="https://www.life-global.org/certificate/5c3d2904-0142-4e9d-ac1b-2e4cc8dd39e8" target="_blank" rel="noopener">
+        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
+        <div class="cert-content">
           <h3>Effective Leadership</h3>
           <p>Issued by HP LIFE</p>
         </div>
-        <span class="cert-link">View Certificate →</span>
+        <div class="cert-action">
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
       </a>
       <!-- HP LIFE Certificate 3 -->
-      <a class="certificate-card" href="https://www.life-global.org/certificate/7a705ee8-aa8d-4ab2-b10a-db44ec203e14" target="_blank" rel="noopener">
-        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
-        <div class="cert-info">
+      <a class="certificate-item" href="https://www.life-global.org/certificate/7a705ee8-aa8d-4ab2-b10a-db44ec203e14" target="_blank" rel="noopener">
+        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
+        <div class="cert-content">
           <h3>Critical Thinking in AI Era</h3>
           <p>Issued by HP LIFE</p>
         </div>
-        <span class="cert-link">View Certificate →</span>
+        <div class="cert-action">
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
       </a>
       <!-- HP LIFE Certificate 4 -->
-      <a class="certificate-card" href="https://www.life-global.org/certificate/c0889dc7-19f9-406f-973c-7ffee6ff41a8" target="_blank" rel="noopener">
-        <div class="cert-icon"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
-        <div class="cert-info">
+      <a class="certificate-item" href="https://www.life-global.org/certificate/c0889dc7-19f9-406f-973c-7ffee6ff41a8" target="_blank" rel="noopener">
+        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="HP LIFE logo" /></div>
+        <div class="cert-content">
           <h3>Basics of Finance</h3>
           <p>Issued by HP LIFE</p>
         </div>
-        <span class="cert-link">View Certificate →</span>
+        <div class="cert-action">
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <!-- Disaster Ready Certificate -->
+      <a class="certificate-item" href="assets/disasterready.pdf" target="_blank" rel="noopener">
+        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="Disaster Ready logo" /></div>
+        <div class="cert-content">
+          <h3>Personal Safety and Security Certificate</h3>
+          <p>Issued by Disaster Ready</p>
+        </div>
+        <div class="cert-action">
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
       </a>
     </div>
   </section>
