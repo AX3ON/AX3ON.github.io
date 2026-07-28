@@ -94,23 +94,24 @@
 
   /* ---------- badges grid ---------- */
   .badges-grid{
-    display:flex;
-    flex-direction:column;
-    gap:0;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap:32px;
   }
   .badge-item{
-    display:grid;
-    grid-template-columns: auto 1fr auto;
+    display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:28px;
-    padding:28px 0;
-    border-bottom:1px solid var(--line);
+    text-align:center;
     text-decoration:none;
-    transition:background .2s ease;
+    padding:24px;
+    background:var(--panel);
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
   }
-  .badge-item:first-child{ border-top:1px solid var(--line); }
   .badge-item:nth-child(1){ animation-delay:.1s; }
   .badge-item:nth-child(2){ animation-delay:.2s; }
   .badge-item:nth-child(3){ animation-delay:.3s; }
@@ -119,18 +120,21 @@
   .badge-item:nth-child(6){ animation-delay:.6s; }
   @keyframes cardFadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
   .badge-item:hover{
-    background:rgba(219, 232, 227, 0.3);
+    transform:translateY(-6px);
+    box-shadow:0 12px 24px -8px rgba(0,0,0,.1);
+    border-color:var(--accent);
   }
   .badge-thumb{
-    width:80px;
-    height:80px;
+    width:140px;
+    height:140px;
     background:#f6f7f4;
-    border-radius:12px;
+    border-radius:16px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:12px;
+    padding:16px;
     flex-shrink:0;
+    margin-bottom:18px;
   }
   .badge-thumb img{
     max-width:100%;
@@ -139,46 +143,49 @@
     display:block;
   }
   .badge-content{
-    min-width:0;
+    width:100%;
   }
   .badge-content h3{
     font-family:"Sora",sans-serif;
-    font-size:20px;
+    font-size:16px;
     font-weight:600;
-    margin:0 0 6px;
+    margin:0 0 8px;
     color:var(--ink);
+    line-height:1.4;
   }
   .badge-content p{
     color:var(--ink-soft);
-    font-size:14.5px;
-    line-height:1.6;
-    margin:0;
+    font-size:13.5px;
+    line-height:1.5;
+    margin:0 0 12px;
   }
   .badge-action{
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
     flex-shrink:0;
+    margin-top:auto;
   }
   .badge-year{
     font-family:"JetBrains Mono",monospace;
-    font-size:12px;
+    font-size:11px;
     color:var(--accent);
     background:var(--accent-soft);
     border-radius:20px;
-    padding:6px 14px;
+    padding:5px 12px;
     font-weight:500;
   }
   .badge-arrow{
-    width:40px;
-    height:40px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     background:var(--ink);
     color:var(--bg);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
+    font-size:14px;
     transition:transform .2s ease, background .2s ease;
   }
   .badge-item:hover .badge-arrow{
@@ -188,42 +195,46 @@
 
   /* ---------- certificates list ---------- */
   .certificates-list{
-    display:flex;
-    flex-direction:column;
-    gap:0;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap:32px;
   }
   .certificate-item{
-    display:grid;
-    grid-template-columns: auto 1fr auto;
+    display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:24px;
-    padding:24px 0;
-    border-bottom:1px solid var(--line);
+    text-align:center;
     text-decoration:none;
-    transition:background .2s ease;
+    padding:24px;
+    background:var(--panel);
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     opacity:0;
     animation:cardFadeIn .6s ease forwards;
   }
-  .certificate-item:first-child{ border-top:1px solid var(--line); }
   .certificate-item:nth-child(1){ animation-delay:.1s; }
   .certificate-item:nth-child(2){ animation-delay:.2s; }
   .certificate-item:nth-child(3){ animation-delay:.3s; }
   .certificate-item:nth-child(4){ animation-delay:.4s; }
   .certificate-item:nth-child(5){ animation-delay:.5s; }
   .certificate-item:hover{
-    background:rgba(219, 232, 227, 0.3);
+    transform:translateY(-6px);
+    box-shadow:0 12px 24px -8px rgba(0,0,0,.1);
+    border-color:var(--accent);
   }
   .cert-thumb{
-    width:64px;
-    height:64px;
-    border-radius:12px;
-    background:var(--accent-soft);
+    width:140px;
+    height:140px;
+    border-radius:16px;
+    background:#f6f7f4;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
     overflow:hidden;
-    padding:8px;
+    padding:16px;
+    margin-bottom:18px;
   }
   .cert-thumb img{
     width:100%;
@@ -232,38 +243,41 @@
     display:block;
   }
   .cert-content{
-    min-width:0;
+    width:100%;
   }
   .cert-content h3{
     font-family:"Sora",sans-serif;
-    font-size:18px;
+    font-size:16px;
     font-weight:600;
-    margin:0 0 4px;
+    margin:0 0 6px;
     color:var(--ink);
+    line-height:1.4;
   }
   .cert-content p{
     color:var(--ink-faint);
-    font-size:14px;
-    margin:0;
+    font-size:13.5px;
+    margin:0 0 14px;
   }
   .cert-action{
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:8px;
     flex-shrink:0;
+    margin-top:auto;
   }
   .cert-btn{
     font-family:"JetBrains Mono",monospace;
-    font-size:12.5px;
+    font-size:11.5px;
     color:var(--accent);
     background:transparent;
     border:1px solid var(--accent);
     border-radius:30px;
-    padding:8px 18px;
+    padding:7px 16px;
     text-decoration:none;
     display:inline-flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
     transition:all .2s ease;
     white-space:nowrap;
   }
@@ -272,8 +286,8 @@
     color:var(--bg);
   }
   .cert-btn svg{
-    width:14px;
-    height:14px;
+    width:12px;
+    height:12px;
     transition:transform .2s ease;
   }
   .certificate-item:hover .cert-btn svg{
@@ -311,23 +325,36 @@
   @media (prefers-reduced-motion:reduce){ .reveal{ animation:none; opacity:1; transform:none; } html{scroll-behavior:auto;} }
 
   @media (max-width:700px){
-    .badges-grid{ gap:0; }
+    .badges-grid{ 
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap:24px; 
+    }
     .badge-item{
-      grid-template-columns: 1fr;
-      text-align:center;
-      gap:16px;
-      padding:24px 0;
+      padding:20px;
     }
-    .badge-thumb{ margin:0 auto; }
-    .badge-action{ justify-content:center; }
+    .badge-thumb{ 
+      width:110px;
+      height:110px;
+      margin-bottom:14px;
+    }
+    .badge-content h3{
+      font-size:14.5px;
+    }
+    .certificates-list{ 
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap:24px;
+    }
     .certificate-item{
-      grid-template-columns: 1fr;
-      text-align:center;
-      gap:16px;
-      padding:20px 0;
+      padding:20px;
     }
-    .cert-thumb{ margin:0 auto; }
-    .cert-action{ justify-content:center; }
+    .cert-thumb{ 
+      width:110px;
+      height:110px;
+      margin-bottom:14px;
+    }
+    .cert-content h3{
+      font-size:14.5px;
+    }
   }
 </style>
 </head>
@@ -434,13 +461,13 @@
       </a>
       <!-- Disaster Ready Certificate -->
       <a class="certificate-item" href="assets/disasterready.pdf" target="_blank" rel="noopener">
-        <div class="cert-thumb"><img src="assets/hplife.jpeg" alt="Disaster Ready logo" /></div>
+        <div class="cert-thumb"><img src="assets/disasterready.svg" alt="Disaster Ready logo" /></div>
         <div class="cert-content">
           <h3>Personal Safety and Security Certificate</h3>
           <p>Issued by Disaster Ready</p>
         </div>
         <div class="cert-action">
-          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="cert-btn">View Certificate <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
     </div>
