@@ -73,7 +73,36 @@
   }
   .icon-btn:hover{ background:var(--ink-soft); transform:scale(1.05); }
   .icon-btn:active{ transform:scale(0.95); background:var(--ink-faint); }
-  @media (max-width:860px){ nav{ display:none; } }
+  .menu-toggle{
+    display:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--line);
+    background:var(--panel); cursor:pointer; flex-direction:column; align-items:center; justify-content:center;
+    gap:5px; transition:background .2s ease, transform .2s ease;
+  }
+  .menu-toggle:hover{ background:var(--ink-soft); transform:scale(1.05); }
+  .menu-toggle:active{ transform:scale(0.95); background:var(--ink-faint); }
+  .menu-toggle span{
+    width:18px; height:2px; background:var(--ink); border-radius:2px; transition:transform .3s ease, opacity .2s ease;
+  }
+  .menu-toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2){ opacity:0; }
+  .menu-toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-nav{
+    display:none; position:absolute; top:100%; left:0; right:0; background:var(--panel);
+    border:1px solid var(--line); border-radius:var(--radius); padding:16px 0; margin-top:12px;
+    box-shadow:0 12px 24px -12px rgba(0,0,0,.2); flex-direction:column; gap:4px; z-index:100;
+  }
+  .mobile-nav a{
+    text-decoration:none; color:var(--ink-soft); font-size:15px; font-weight:500; padding:12px 20px;
+    transition:color .2s ease, background .2s ease;
+  }
+  .mobile-nav a:hover{ color:var(--ink); background:var(--accent-soft); }
+  .mobile-nav a.active{ color:var(--ink); background:var(--accent-soft); font-weight:600; }
+  @media (max-width:860px){
+    nav{ display:none; }
+    .menu-toggle{ display:flex; }
+    .mobile-nav.open{ display:flex; }
+    header{ position:relative; }
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -270,6 +299,16 @@
       <a href="details.html">Details</a>
     </nav>
     <div class="nav-right">
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="status.html">Status</a>
+      <a href="details.html">Details</a>
     </div>
   </header>
 </div>
@@ -293,7 +332,7 @@
     <div class="photo-block">
       <div class="photo-frame-bg"></div>
       <div class="photo-card">
-        <img src="assets/pfp.png" alt="Profile Photo">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=750&fit=crop" alt="Abstract gradient artwork">
       </div>
       <div class="social-rail">
         <a href="https://github.com/cx051" target="_blank" rel="noopener" aria-label="GitHub">
@@ -424,6 +463,24 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 document.querySelectorAll('#skills').forEach(sec => observer.observe(sec));
+
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+if(menuToggle && mobileNav){
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  
+  // Close mobile nav when clicking a link
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+    });
+  });
+}
 </script>
 
 </body>
