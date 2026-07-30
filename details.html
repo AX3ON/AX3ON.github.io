@@ -177,7 +177,7 @@
   /* ---------- category rows ---------- */
   .credentials-wrap{ display:flex; flex-direction:column; gap:52px; margin-top:44px; }
   .category-row{ display:grid; grid-template-columns:240px 1fr; gap:36px; }
-  .category-side{ position:sticky; top:24px; align-self:start; }
+  .category-side{ position:sticky; top:24px; align-self:start; z-index:10; }
   .category-icon{
     width:38px; height:38px; border-radius:10px; background:var(--accent-soft);
     color:var(--accent); display:flex; align-items:center; justify-content:center; margin-bottom:14px;
@@ -199,8 +199,9 @@
   /* ---------- credential card ---------- */
   .credential-card{
     position:relative;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:18px;
     text-decoration:none;
     padding:22px;
     background:var(--panel);
@@ -225,7 +226,9 @@
   .featured-cards .credential-card{ border-color:var(--accent); background:var(--accent-soft); }
   .featured-cards .credential-card:hover{ box-shadow:0 12px 24px -8px rgba(34,86,77,.25); }
   .card-tag{
-    align-self:flex-start;
+    position:absolute;
+    top:22px;
+    right:22px;
     font-family:"JetBrains Mono",monospace;
     font-size:10.5px;
     letter-spacing:.04em;
@@ -234,20 +237,19 @@
     background:var(--panel);
     border-radius:20px;
     padding:4px 10px;
-    margin-bottom:14px;
   }
   .card-thumb{
-    width:64px; height:64px; border-radius:12px; background:#f6f7f4;
-    display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:16px;
+    width:90px; height:90px; border-radius:12px; background:#f6f7f4;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .card-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .card-thumb img{ width:100%; height:100%; object-fit:contain; display:block; }
   .card-thumb.contain img{ object-fit:contain; padding:8px; }
   .credential-card h4{
     font-family:"Sora",sans-serif; font-size:15.5px; font-weight:600; margin:0 0 4px; line-height:1.35;
   }
   .credential-card .issuer{ font-size:13px; color:var(--ink-faint); margin:0 0 18px; }
   .card-bottom{
-    margin-top:auto; display:flex; align-items:center; justify-content:space-between;
+    display:flex; align-items:center; justify-content:space-between;
   }
   .card-date{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); }
   .card-arrow{
@@ -257,7 +259,7 @@
   }
   .credential-card:hover .card-arrow{ transform:translateX(3px); background:var(--accent); }
   .ribbon{
-    position:absolute; top:16px; right:16px; width:22px; height:22px; color:var(--mark);
+    position:absolute; top:22px; right:52px; width:22px; height:22px; color:var(--mark);
   }
   .ribbon svg{ width:100%; height:100%; }
 
@@ -306,6 +308,10 @@
   @media (max-width:700px){
     .category-cards{ grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:18px; }
     .credential-card{ padding:18px; }
+    .card-thumb{ width:70px; height:70px; }
+    .credential-card{ grid-template-columns:70px 1fr; gap:14px; }
+    .card-tag{ font-size:9.5px; padding:3px 8px; top:18px; right:18px; }
+    .ribbon{ top:18px; right:48px; }
   }
 </style>
 </head>
@@ -341,7 +347,7 @@
         <p class="eyebrow">Details</p>
         <h1>Certificates &amp; Credentials</h1>
         <p class="lede">
-          A curated record of badges and certificates earned through continuous learning — each one verifiable at the source.
+          A curated record of badges and certificates earned through continuous learning.
         </p>
 
         <div class="stats-row">
@@ -419,10 +425,10 @@
     </div>
     <div class="featured-cards">
       <a class="credential-card" href="https://www.skills.google/public_profiles/a963b74a-b9c3-4439-b786-75a991453365/badges/25790657" target="_blank" rel="noopener">
+        <span class="card-tag">Badge</span>
         <div class="ribbon">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 8.1l5.9-.8L12 2z"/></svg>
         </div>
-        <span class="card-tag">Badge</span>
         <div class="card-thumb"><img src="assets/google.png" alt="Google Skills logo" /></div>
         <h4>Generative AI for Healthcare</h4>
         <p class="issuer">Google Skills</p>
@@ -432,10 +438,10 @@
         </div>
       </a>
       <a class="credential-card" href="assets/PFA.pdf" target="_blank" rel="noopener">
+        <span class="card-tag">Certificate</span>
         <div class="ribbon">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 8.1l5.9-.8L12 2z"/></svg>
         </div>
-        <span class="card-tag">Certificate</span>
         <div class="card-thumb contain"><img src="assets/UKHSA.jpeg" alt="UK Health Security Agency logo" /></div>
         <h4>COVID-19: Psychological First Aid</h4>
         <p class="issuer">UK Health Security Agency</p>
@@ -445,10 +451,10 @@
         </div>
       </a>
       <a class="credential-card" href="assets/disasterready.pdf" target="_blank" rel="noopener">
+        <span class="card-tag">Certificate</span>
         <div class="ribbon">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 8.1l5.9-.8L12 2z"/></svg>
         </div>
-        <span class="card-tag">Certificate</span>
         <div class="card-thumb contain"><img src="assets/disasterready.png" alt="Disaster Ready logo" /></div>
         <h4>Personal Safety and Security</h4>
         <p class="issuer">DisasterReady</p>
