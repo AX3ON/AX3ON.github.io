@@ -20,6 +20,8 @@ target/
 .gradle/
 .mypy_cache/
 .pytest_cache/
+coverage/
+htmlcov/
 
 # Logs and temp files
 *.log
@@ -30,22 +32,19 @@ target/
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# System files
+# System
 .DS_Store
 Thumbs.db
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Compressed files
+# Other
 *.zip
 *.gz
 *.tar
@@ -68,3 +67,4 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+.coverage
