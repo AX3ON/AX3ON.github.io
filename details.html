@@ -538,7 +538,7 @@
   @media (prefers-reduced-motion:reduce){ .reveal, .credential-card{ animation:none; opacity:1; transform:none; } html{scroll-behavior:auto;} }
 
   @media (max-width:700px){
-    .category-cards{ grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:18px; }
+    .category-cards{ grid-template-columns:1fr; gap:18px; }
     .credential-card{ padding:16px 18px; gap:16px; min-height:100px; }
     .card-thumb{ width:80px; height:80px; }
     .credential-card h4{ font-size:14.5px; }
@@ -990,6 +990,13 @@
 
   items.forEach((li, index) => {
     li.addEventListener('mouseenter', () => handleSelect(li, index));
+    li.addEventListener('mouseleave', () => {
+      // Return bubble to active page tab when not hovering
+      const currentActiveLi = items[activeIndex];
+      if (currentActiveLi) {
+        updateEffectPosition(currentActiveLi);
+      }
+    });
 
     const anchor = li.querySelector('a');
     if (anchor) {
