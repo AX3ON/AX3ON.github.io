@@ -640,11 +640,30 @@
 <div class="wrap">
   <header>
     <div class="brand"><span class="brand-dot">e</span> erebos</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="status.html" class="active">Status</a>
-      <a href="details.html">Details</a>
-    </nav>
+
+    <!-- GooeyNav Integration -->
+    <div class="gooey-nav-container" id="gooey-nav-container">
+      <!-- Hidden SVG Filter for Smooth Liquid Cluster Gooey Effect -->
+      <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+        <defs>
+          <filter id="gooey-filter-svg">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -8" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+      <nav>
+        <ul id="gooey-nav-ul">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="status.html">Status</a></li>
+          <li><a href="details.html">Details</a></li>
+        </ul>
+      </nav>
+      <span class="effect filter" id="gooey-filter"></span>
+      <span class="effect text" id="gooey-text"></span>
+    </div>
+
     <div class="nav-right">
       <button class="menu-toggle" aria-label="Toggle menu">
         <span></span>
